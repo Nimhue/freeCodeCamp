@@ -3,7 +3,8 @@ import streamlit as st
 
 st.write("""
 # Simple Stock Price App
-Shown are the stock **closing** price and **volume** of Google!
+
+### Shown are the stock **closing** price and **volume** of Google!
 """)
 
 # https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
@@ -17,3 +18,19 @@ tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
 
 st.line_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
+
+st.write("""
+### Shown are the stock closing price and volume of Apple!
+""")
+
+# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
+#define the ticker symbol
+tickerSymbolA = 'AAPL'
+#get data on this ticker
+tickerDataA = yf.Ticker(tickerSymbolA)
+#get the historical prices for this ticker
+tickerDfA = tickerDataA.history(period='1d', start='2010-5-31', end='2020-5-31')
+# Open	High	Low	Close	Volume	Dividends	Stock Splits
+
+st.line_chart(tickerDfA.Close)
+st.line_chart(tickerDfA.Volume)
